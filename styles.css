@@ -180,11 +180,11 @@ footer #newsletter button:hover {
   color: #001f3f;
 }
 
-.cart-button {
+.cart-buttons {
   margin-top: 0.5rem;
 }
 
-.cart-button button {
+.cart-buttons button {
   background-color: #155ebc;
   color: white;
   border: none;

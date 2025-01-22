@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC Fitness Store</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <!-- Font Awesome for future icons -->
 </head>
 
 <body>
@@ -27,9 +26,7 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Store Headline and Description -->
         <section id="store">
             <div>
                 <h2>Visit Our Store</h2>
@@ -37,13 +34,12 @@
                     planet.
                 </p>
             </div>
-            <!-- Cart Button -->
-            <div class="cart-button">
-                <button><i class="fas fa-shopping-cart"></i> View the Cart</button>
+            <div class="cart-buttons">
+                <button id="clear-cart"><i class="fas fa-trash"></i> Clear Cart</button>
+                <button id="process-order"><i class="fas fa-credit-card"></i> Process Order</button>
             </div>
         </section>
 
-        <!-- Store Items -->
         <section id="store-items">
             <div class="item-card">
                 <img src="./assets/yoga-mat.png" alt="Eco-friendly Yoga Mat">
@@ -51,7 +47,7 @@
                     <h3>Eco-friendly Yoga Mat</h3>
                     <p>Comfortable, durable, and eco-conscious.</p>
                     <p>$40.00</p>
-                    <button>Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
             <div class="item-card">
@@ -60,7 +56,7 @@
                     <h3>Comfort Fit Tank Top</h3>
                     <p>Soft, breathable fabric for ultimate comfort.</p>
                     <p>$30.00</p>
-                    <button>Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
             <div class="item-card">
@@ -69,7 +65,7 @@
                     <h3>Insulated Water Bottle</h3>
                     <p>Keep your drinks cold or hot for hours.</p>
                     <p>$20.00</p>
-                    <button>Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
             <div class="item-card">
@@ -78,7 +74,7 @@
                     <h3>Resistance Bands Set</h3>
                     <p>Perfect for at-home workouts and easy to carry.</p>
                     <p>$25.00</p>
-                    <button>Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
             <div class="item-card">
@@ -87,7 +83,7 @@
                     <h3>Yoga Block</h3>
                     <p>Support and enhance your yoga poses.</p>
                     <p>$15.00</p>
-                    <button>Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
 
@@ -97,7 +93,7 @@
                     <h3>Microfiber Gym Towel</h3>
                     <p>Lightweight and quick-drying for your workouts.</p>
                     <p>$18.00</p>
-                    <button>Add to Cart</button>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -107,7 +103,7 @@
     <footer>
         <section id="newsletter">
             <h3>Subscribe to Our Newsletter</h3>
-            <form action="#">
+            <form id="newsletter-form" action="#">
                 <input type="email" placeholder="Enter your email">
                 <button type="submit">Subscribe</button>
             </form>
@@ -127,6 +123,46 @@
             </ul>
         </div>
     </footer>
+
+
+    <!-- SCRIPT -->
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Thank you for subscribing.');
+        });
+
+        let cart = [];
+
+        //"Add to Cart" buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                cart.push('item');
+                alert('Item added to the cart');
+            });
+        });
+
+        //"Clear Cart" button
+        document.getElementById('clear-cart').addEventListener('click', () => {
+            if (cart.length > 0) {
+                cart = [];
+                alert('Cart cleared');
+            } else {
+                alert('No items to clear');
+            }
+        });
+
+        //"Process Order" button
+        document.getElementById('process-order').addEventListener('click', () => {
+            if (cart.length > 0) {
+                cart = [];
+                alert('Thank you for your order');
+            } else {
+                alert('Cart is empty');
+            }
+        });
+    </script>
+
 </body>
 
 </html>

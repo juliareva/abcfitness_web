@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | ABC Fitness</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -25,9 +25,7 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- About Us Section -->
         <section id="about-us">
             <div id="about-us-description">
                 <h2>Our Mission</h2>
@@ -38,7 +36,6 @@
             <img src="./assets/Client2_GroupKickboxing.png" alt="ABC Fitness Studio">
         </section>
 
-        <!-- Meet the Team Section -->
         <section id="team">
             <h2>Meet the Team</h2>
             <div class="team-cards">
@@ -60,10 +57,9 @@
             </div>
         </section>
 
-        <!-- Feedback Form -->
         <section id="feedback">
             <h2>Send Us Your Feedback</h2>
-            <form action="#">
+            <form id="feedback-form" action="#">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name" required>
 
@@ -78,7 +74,6 @@
             </form>
         </section>
 
-        <!-- Contact Us Section -->
         <section id="contact">
             <h2>Contact Us</h2>
             <p><strong>Address:</strong> 123 Fitness Lane, Wellness City</p>
@@ -96,7 +91,7 @@
     <footer>
         <section id="newsletter">
             <h3>Subscribe to Our Newsletter</h3>
-            <form action="#">
+            <form id="newsletter-form" action="#">
                 <input type="email" placeholder="Enter your email">
                 <button type="submit">Subscribe</button>
             </form>
@@ -116,6 +111,19 @@
             </ul>
         </div>
     </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Thank you for subscribing.');
+        });
+
+        document.getElementById('feedback-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Thank you for your message.');
+        });
+    </script>
 </body>
 
 </html>

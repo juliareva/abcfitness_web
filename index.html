@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC Fitness</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -25,9 +25,7 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Classes Section -->
         <section id="classes">
             <h2>Our Classes</h2>
             <p>Find the perfect class to suit your fitness goals.</p>
@@ -52,7 +50,6 @@
             <button><a href="#book-class">Book a Class Now</a></button>
         </section>
 
-        <!-- Why Us Section -->
         <section id="why-us">
             <h2>Why Choose ABC Fitness?</h2>
             <div class="perks">
@@ -74,7 +71,6 @@
             </div>
         </section>
 
-        <!-- Shop Section -->
         <section id="shop">
             <h2>Visit Our Shop</h2>
             <div class="shop-items">
@@ -98,7 +94,6 @@
             <button><a href="shop.html">Visit Store</a></button>
         </section>
 
-        <!-- Testimonials Section -->
         <section id="testimonials">
             <h2>Why Clients Love Us</h2>
             <div class="testimonials">
@@ -128,7 +123,7 @@
     <footer>
         <section id="newsletter">
             <h3>Subscribe to Our Newsletter</h3>
-            <form action="#">
+            <form id="newsletter-form" action="#">
                 <input type="email" placeholder="Enter your email">
                 <button type="submit">Subscribe</button>
             </form>
@@ -147,6 +142,14 @@
             </ul>
         </div>
     </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Thank you for subscribing.');
+        });
+    </script>
 </body>
 
 </html>
