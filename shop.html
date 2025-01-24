@@ -35,6 +35,7 @@
                 </p>
             </div>
             <div class="cart-buttons">
+                <button id="view-cart"><i class="fas fa-eye"></i> View Cart</button>
                 <button id="clear-cart"><i class="fas fa-trash"></i> Clear Cart</button>
                 <button id="process-order"><i class="fas fa-credit-card"></i> Process Order</button>
             </div>
@@ -69,7 +70,7 @@
                 </div>
             </div>
             <div class="item-card">
-                <img src="./assets/resistance-bands.png" alt="Resistance Bands Set">
+                <img src="./assets/resistance-bands.jpg" alt="Resistance Bands Set">
                 <div>
                     <h3>Resistance Bands Set</h3>
                     <p>Perfect for at-home workouts and easy to carry.</p>
@@ -78,7 +79,7 @@
                 </div>
             </div>
             <div class="item-card">
-                <img src="./assets/yoga-block.png" alt="Yoga Block">
+                <img src="./assets/yoga-block.jpg" alt="Yoga Block">
                 <div>
                     <h3>Yoga Block</h3>
                     <p>Support and enhance your yoga poses.</p>
@@ -88,7 +89,7 @@
             </div>
 
             <div class="item-card">
-                <img src="./assets/towels.png" alt="Fitness Gloves">
+                <img src="./assets/towels.jpg" alt="Fitness Gloves">
                 <div>
                     <h3>Microfiber Gym Towel</h3>
                     <p>Lightweight and quick-drying for your workouts.</p>
@@ -129,36 +130,69 @@
     <script>
         document.getElementById('newsletter-form').addEventListener('submit', function (event) {
             event.preventDefault();
-            alert('Thank you for subscribing.');
+            const emailInput = document.querySelector('#newsletter-form input[type="email"]').value.trim();
+            if (emailInput === '') {
+                alert('Please enter a valid email address.');
+            } else {
+                alert('Thank you for subscribing.');
+            }
         });
 
         let cart = [];
-
         //"Add to Cart" buttons
         document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                cart.push('item');
-                alert('Item added to the cart');
+            button.addEventListener('click', (event) => {
+                const itemCard = event.target.closest('.item-card');
+                const itemName = itemCard.querySelector('h3').textContent;
+
+                let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+                cart.push({ name: itemName });
+
+                sessionStorage.setItem('cart', JSON.stringify(cart));
+
+                alert(`${itemName} added to the cart.`);
             });
+        });
+
+        //"View Cart" button
+        document.getElementById('view-cart').addEventListener('click', () => {
+            const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            let cartDetails = 'Your Cart:\n';
+            cart.forEach((item, index) => {
+                cartDetails += `${index + 1}. ${item.name} \n`;
+            });
+
+            alert(cartDetails);
         });
 
         //"Clear Cart" button
         document.getElementById('clear-cart').addEventListener('click', () => {
+            const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
             if (cart.length > 0) {
-                cart = [];
-                alert('Cart cleared');
+                sessionStorage.removeItem('cart');
+                alert('Cart cleared.');
             } else {
-                alert('No items to clear');
+                alert('No items to clear.');
             }
         });
 
         //"Process Order" button
         document.getElementById('process-order').addEventListener('click', () => {
+            const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
             if (cart.length > 0) {
-                cart = [];
-                alert('Thank you for your order');
+                sessionStorage.removeItem('cart');
+                alert('Thank you for your order!');
             } else {
-                alert('Cart is empty');
+                alert('Cart is empty.');
             }
         });
     </script>

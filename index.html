@@ -147,7 +147,12 @@
     <script>
         document.getElementById('newsletter-form').addEventListener('submit', function (event) {
             event.preventDefault();
-            alert('Thank you for subscribing.');
+            const emailInput = document.querySelector('#newsletter-form input[type="email"]').value.trim();
+            if (emailInput === '') {
+                alert('Please enter a valid email address.');
+            } else {
+                alert('Thank you for subscribing.');
+            }
         });
     </script>
 </body>
